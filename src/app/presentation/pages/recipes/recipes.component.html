@@ -1,0 +1,18 @@
+<div class="recipes">
+  <div class="recipes-wrapper">
+    <ng-container *ngIf="recipes">
+      <ng-container *ngIf="recipes.length; else empty">
+        <ng-container *ngFor="let recipe of recipes">
+          <div class="recipe-card-wrapper">
+            <app-recipe-card [recipe]="recipe" (delete)="deleteRecipe($event)"></app-recipe-card>
+          </div>
+        </ng-container>
+      </ng-container>
+      <ng-template #empty>Список рецептов пуст</ng-template>
+    </ng-container>
+  </div>
+
+  <div class="spinner-wrapper" *ngIf="isLoading$ | async">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<mat-card class="recipe-card">
+  <mat-card-header class="mb-10">
+    <img class="recipe-card__img" [src]="recipe.img | emptyImg">
+  </mat-card-header>
+  <mat-card-content class="recipe-card__content">
+    <div class="fw-700 fz-16 mb-10">{{recipe.name}}</div>
+    <div class="recipe-card__description">{{recipe.description | sizeLimiter:150}}</div>
+  </mat-card-content>
+  <mat-card-actions class="recipe-card__actions">
+    <button
+      mat-button
+      color="primary"
+      class="recipe-card__action"
+      [routerLink]="['recipe-info', recipe.id]"
+    >Подробнее</button>
+    <button
+      mat-button
+      color="warn"
+      class="recipe-card__action"
+      (click)="onDelete()"
+    >Удалить</button>
+  </mat-card-actions>
+</mat-card>

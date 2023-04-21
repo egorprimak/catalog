@@ -1,0 +1,41 @@
+<div class="recipe-info">
+  <ng-container *ngIf="recipe$ | async as recipe">
+    <div class="recipe-info__header d-flex align-items-center mb-20">
+      <button mat-icon-button class="mr-10" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div class="fz-18 fw-700">{{recipe.name}}</div>
+    </div>
+    <div class="recipe-info__content">
+      <img class="recipe-info__item recipe-info__img" [src]="recipe.img | emptyImg" [alt]="recipe.name">
+      <mat-card class="recipe-info__item recipe-info__description">
+        <mat-card-header class="fw-700 fz-16 mb-10">Описание</mat-card-header>
+        <mat-card-content>{{recipe.description}}</mat-card-content>
+      </mat-card>
+      <mat-card class="recipe-info__item recipe-info__ingredients">
+        <mat-card-header class="fw-700 fz-16 mb-10">Ингридиенты</mat-card-header>
+          <mat-card-content>
+            <ng-container *ngIf="recipe.ingredients.length; else emptyIngredients">
+              <table mat-table [dataSource]="recipe.ingredients" class="table">
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef>Название</th>
+                  <td mat-cell *matCellDef="let ingredient">{{ingredient.name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="grams">
+                  <th mat-header-cell *matHeaderCellDef>Количество в граммах</th>
+                  <td mat-cell *matCellDef="let ingredient">{{ingredient.grams}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columns"></tr>
+                <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+              </table>
+            </ng-container>
+            <ng-template #emptyIngredients>Нет данных</ng-template>
+          </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <div class="spinner-wrapper" *ngIf="isLoading$ | async">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</div>

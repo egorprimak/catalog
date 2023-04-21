@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+.recipe-card {
+  width: 400px;
+  height: 450px;
+  margin: 10px;
+
+  &__img {
+    display: block;
+    max-height: 300px;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__action {
+    font-size: 12px;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

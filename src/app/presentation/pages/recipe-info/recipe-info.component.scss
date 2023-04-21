@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.recipe-info {
+  height: 100%;
+  padding: 15px;
+
+  &__name {
+    margin-bottom: 10px;
+  }
+
+  &__content{
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__item {
+    width: 35%;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 35%;
+  }
+
+  .table {
+    width: 100%;
+  }
+}

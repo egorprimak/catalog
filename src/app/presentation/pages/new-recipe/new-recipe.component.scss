@@ -1,0 +1,50 @@
+@import "./src/styles/color";
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.new-recipe {
+  padding: 15px;
+  position: relative;
+  height: 100%;
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__panel {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__image-card {
+    background-color: whitesmoke;
+    padding: 4px 16px 3px;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid $border-color;
+    color: $light-black;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .input-file {
+    display: none;
+  }
+}
+
+.fixed-wrapper {
+  height: 100%;
+  z-index: 90;
+  background-color: $transparent-white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
